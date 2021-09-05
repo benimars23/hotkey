@@ -1,0 +1,102 @@
+#include "Keyboard.h"
+#define MAX8BUTTONS   // only to save storage space if not using more than 8 buttons
+#include <MobaTools.h>
+
+const byte buttonPin[] = { 2, 3, 4, 5, 6 };
+const byte buttonCount = sizeof( buttonPin ); // buttonPin must be declared as byte to work correctly
+MoToButtons buttons( buttonPin, buttonCount, 20, 800 ); // 20ms debounce time, 500ms longpress ( not used here )
+
+void setup() {
+  Keyboard.begin();
+}
+
+void loop() {
+  buttons.processButtons();
+  
+  if (buttons.longPress(0) ) {  
+    // sleep pc ( pin 2 ) 
+    Keyboard.press(KEY_LEFT_CTRL); 
+    Keyboard.press(KEY_LEFT_ALT);
+    Keyboard.press('k');
+    delay(100);
+    Keyboard.releaseAll(); 
+  }
+
+  if (buttons.shortPress(0) ) {   
+    // kill internet ( pin 2 ) 
+    Keyboard.press(KEY_LEFT_CTRL); 
+    Keyboard.press(KEY_LEFT_ALT);
+    Keyboard.press('m');
+    delay(100);
+    Keyboard.releaseAll(); 
+  }
+
+  if (buttons.longPress(1) ) {   
+    // show monitor profile dropdown( pin 3 ) 
+    Keyboard.press(KEY_LEFT_CTRL); 
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press(KEY_F4);
+    delay(100);
+    Keyboard.releaseAll(); 
+
+  }
+
+  if (buttons.shortPress(1) ) {   
+    // toggle monitor profile three and one ( pin 3 ) 
+    Keyboard.press(KEY_LEFT_CTRL); 
+ Keyboard.press(KEY_LEFT_ALT); 
+      Keyboard.press('y');
+    delay(100);
+    Keyboard.releaseAll(); 
+  }
+
+  if (buttons.longPress(2) ) {   
+    // turn on led( pin 4 ) 
+    Keyboard.press(KEY_LEFT_CTRL); 
+       Keyboard.press(KEY_F5);
+    delay(100);
+    Keyboard.releaseAll(); 
+  }
+
+ if (buttons.shortPress(2) ) {   
+    // change LED Profile ( pin 4 ) 
+    Keyboard.press(KEY_LEFT_CTRL); 
+    Keyboard.press(KEY_LEFT_ALT);
+    Keyboard.press('p');
+    delay(100);
+    Keyboard.releaseAll(); 
+  }
+  if (buttons.longPress(3) ) {  
+    // record last 5min ( pin 5 ) 
+    Keyboard.press(KEY_LEFT_CTRL); 
+    Keyboard.press(KEY_LEFT_ALT);
+    Keyboard.press(KEY_F9);
+    delay(100);
+    Keyboard.releaseAll(); 
+  }
+  if (buttons.shortPress(3) ) {  
+    // record on/off( pin 5 ) 
+    Keyboard.press(KEY_LEFT_CTRL); 
+    Keyboard.press(KEY_LEFT_ALT);
+    Keyboard.press(KEY_F10);
+    delay(100);
+    Keyboard.releaseAll(); 
+
+  if (buttons.longPress(4) ) {  
+    // 5th button ( pin 6 ) pressed
+    Keyboard.press(KEY_LEFT_CTRL); 
+    Keyboard.press(KEY_LEFT_ALT);
+    Keyboard.press('d');
+    delay(100);
+    Keyboard.releaseAll(); 
+  }
+  if (buttons.shortPress(4) ) {
+    // 5th button ( pin 6 ) pressed
+    Keyboard.press(KEY_LEFT_CTRL); 
+    Keyboard.press(KEY_LEFT_ALT);
+    Keyboard.press('d');
+    delay(100);
+    Keyboard.releaseAll(); 
+  }
+  }
+  }
